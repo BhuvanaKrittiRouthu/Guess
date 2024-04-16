@@ -1,0 +1,36 @@
+<html>
+    <head>
+       <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>GUESS A NUMBER BETWEEN 1 AND 10:</h1>
+        <input type="text" id="guessField" placeholder="Enter Here">
+        <button onclick="checkGuess()">Submit Guess</button>
+        <p id="message"></p>
+    <script>
+        let randomNumber = Math.floor(Math.random()*10)+1;
+
+        let guessCount = 0;
+        function checkGuess(){
+        let guess=parseInt(document.getElementById("guessField").value);
+        if(isNaN(guess) || guess<1 || guess>100){
+        setMessage("Please enter a valid number");
+        return;
+        }
+
+        guessCount++;
+
+        if(guess===randomNumber){
+        setMessage("Congratulations!! You Won");
+        }
+        else{
+        let message=guess<randomNumber?"Too low!! try again":"Too high! try again";
+        setMessage(message);
+        }
+        }
+        function setMessage(message){
+        document.getElementById("message").textContent=message;
+        }
+    </script>
+    </body>
+</html>
